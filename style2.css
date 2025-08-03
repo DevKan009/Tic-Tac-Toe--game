@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', 'Bitcount Prop Single', sans-serif;
+    scroll-behavior: smooth;
+    background-image: url('bg1.jpg');
+    background-repeat: repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    color: #E5E5E5;
+}
+
+/* Navigation */
+.nav {
+    background: rgba(29, 32, 38, 0.94);
+    font-family:  'Bitcount Prop Single', sans-serif;
+
+    backdrop-filter: blur(4px);
+    color: #FF61C3;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 8vh;
+    font-size: min(28px, 5vw);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 8vh;
+    box-shadow: 0 3px 16px 0 rgba(30,30,50,0.08);
+    z-index: 11;
+    border-bottom: 2px solid #0b1e26;
+}
+
+/* Container */
+.container {
+    min-height: 92vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4vw;
+    padding: 9vh 2vw 2vw 2vw;
+}
+
+/* Game Grid */
+#grid {
+    background: rgba(32,36,54,0.87);
+    backdrop-filter: blur(7px);
+    border: 2px solid #0b1e26;
+
+    /* border: 2px solid #3EC6FF; */
+    border-radius: 16px;
+    box-shadow: 0 8px 36px rgba(50,60,95,0.15);
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vw;
+    width: min(60vw, 65vh);
+    aspect-ratio: 1 / 1;
+    padding: 2vw;
+    transition: box-shadow 0.25s;
+}
+
+.cell {
+    background: linear-gradient(135deg, rgba(60,170,250,0.07), rgba(255,97,195,0.10));
+    /* border: 1.5px solid #3EC6FF; */
+    border: 1.5px solid #0b1e26;
+
+    border-radius: 18px;
+    color: #E5E5E5;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cell:hover {
+    background: rgba(255,97,195,0.16);
+    border-color: #FFD93D;
+    box-shadow: 0 0 0 3px #FFD93D40;
+    transform: scale(1.06);
+}
+
+/* Side Panel */
+#sidepnl {
+    color: #FFD93D;
+    background: rgba(27,30,44,0.88);
+    backdrop-filter: blur(9px);
+    border: 2px solid #3EC6FF;
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(60,40,80,0.13);
+    padding: 2vw 2.5vw;
+    min-width: 220px;
+    min-height: 170px;
+    max-width: 23vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.13rem;
+    margin-top: 2vh;
+    gap: 1.2rem;
+}
+
+#sidepnl p.turn {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #FF61C3;
+    letter-spacing: 1px;
+    margin: 0.2em 0 0.8em 0;
+    text-shadow: 0 1px 6px #3ec6ff55;
+}
+
+/* Button Styling */
+.btn {
+    background: linear-gradient(90deg, #3EC6FF 10%, #FF61C3 90%);
+    color: #FFF;
+    border: none;
+    border-radius: 16px;
+    padding: 0.65em 2.1em;
+    font-size: 1.17em;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    cursor: pointer;
+    box-shadow: 0 2px 14px #2b2d4230;
+    transition: filter 0.22s, transform 0.17s;
+    margin-top: 0.7em;
+}
+.btn:hover, .btn:active {
+    filter: brightness(1.13) contrast(1.07);
+    transform: scale(1.04);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4vh;
+    }
+    #grid {
+        width: 80vw;
+        min-width: 240px;
+        max-width: 94vw;
+        gap: 3vw;
+        padding: 3vw;
+    }
+    #sidepnl {
+        max-width: 99vw;
+        min-width: 160px;
+        margin: 0 auto;
+        background: rgba(27,30,44,0.92);
+        padding: 1.6rem 1rem;
+    }
+}
+@media (max-width: 600px) {
+    .nav {
+        font-size: 4vw;
+        line-height: 7vh;
+        height: 7vh;
+    }
+    #grid {
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        padding: 2vw 1vw;
+        gap: 4vw;
+        width: 98vw;
+        min-width: 180px;
+        max-width: none;
+    }
+    .cell {
+        font-size: clamp(1.5rem, 8vw, 2.4rem);
+        border-radius: 12px;
+    }
+    #sidepnl {
+        font-size: 0.99rem;
+        border-radius: 11px;
+        min-width: 120px;
+        padding: 1rem 1vw;
+    }
+}
+
+/* Nice transition for theme switching, if needed later */
+* {
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+    transition-delay:0;
+}
